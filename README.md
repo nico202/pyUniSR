@@ -17,6 +17,15 @@ Read the exaples. :)
 
 -	Find someone that will maintain this next year on
 -	Add features (I'll add them when I'll need them, or if someone asks)
+-	Include DB/generate empty
+
+###Db structure:  
+the db is used ony by the Bacheca, to keep track of the unread messages
+
+```
+ messages:
+ id, valid_from, valid_through, from, title, content
+```
 
 ##LICENCE
 
