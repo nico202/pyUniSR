@@ -17,7 +17,6 @@ Read the exaples. :)
 
 -	Find someone that will maintain this next year on
 -	Add features (I'll add them when I'll need them, or if someone asks)
--	Setuptools?
 
 ##LICENCE
 
