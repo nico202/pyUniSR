@@ -20,7 +20,7 @@ Read the exaples. :)
 -	Include DB/generate empty
 
 ###Db structure:  
-the db is used ony by the Bacheca, to keep track of the unread messages
+the db is used only by the Bacheca, to keep track of the unread messages
 
 ```
  messages:
