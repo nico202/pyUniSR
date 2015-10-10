@@ -3,4 +3,6 @@ import config
 
 me = UniSR.User()
 me.login(config.username, config.password)
-print me.getCorsi()
+me.getCorsi()
+print me.corsi
+print me.corso

@@ -241,9 +241,7 @@ class User:
         orari_html = html.fromstring(self.lastPageContent)
         if not self.corsi:
             self.getCorsi()
-
         orari_tmp_list = [ i for i in orari_html.xpath('//table[not(contains(@bgcolor, "#ffffff"))]//tbody/tr[@class="nero"]//td[1]//text()') if i.strip() ]
-
         dates = {}
         orari_list = []
         c = 0
@@ -262,13 +260,11 @@ class User:
         for lezione in lezioni_list:
             if counter in dates:
                 date = dates[counter]
-
             if lezione in self.corsi:
                 index = counter * 2
                 to_print = "%s %s %s %s %s" % (date, orari_list[counter], lezione, aule_list[index], aule_list[index + 1])
-                if day_only == date or not date:
+                if day_only == date or not day_only:
                     print to_print
-
             counter += 1
 
     def getCorsi(self):
