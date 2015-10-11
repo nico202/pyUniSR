@@ -78,11 +78,11 @@ class User:
     def getParams(self, others = {}):
         params = OrderedDict([('jsessionid', self.jsessionid)])
         if others != {}:
-            for key, value in others.iteritems():
+            for key, value in list(others.items()): #others.iteritems()
                 params[key] = value
         url_params = ""
         first = 1
-        for key, value in params.iteritems():
+        for key, value in list(params.items()): #params.iteritems()
             prepend = ";" if first else "?"
             first = 0
             url_params += prepend+key+"="+value
@@ -102,7 +102,7 @@ class User:
             if login_html.xpath('//div[@class="titolopagina"]/text()')[0] == "Scegli carriera":
                 if matricola == "auto":
                     table = [ box for box in login_html.xpath('//table[@class="detail_table"]//text()') if box.strip() ]
-                    piani_disponibili = (len(table) / 4) - 1
+                    piani_disponibili = int(len(table) / 4) - 1
                     for i in range(piani_disponibili):
                         if table[ (i+1) * 4 + 3] == "Attivo":
                             matricola = table[ (i+1) * 4]

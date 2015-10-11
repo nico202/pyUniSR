@@ -3,4 +3,4 @@ import config
 
 me = UniSR.User()
 me.login(config.username, config.password)
-me.bacheca()
+me.bacheca('./uni.db')

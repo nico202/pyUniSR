@@ -4,5 +4,5 @@ import config
 me = UniSR.User()
 me.login(config.username, config.password)
 me.getCorsi()
-print me.corsi
-print me.corso
+print(me.corsi)
+print(me.corso)

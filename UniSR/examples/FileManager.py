@@ -17,11 +17,11 @@ def explore(folders):
         folder = folder.encode("utf-8")
         if not os.path.isdir(folder):
             os.makedirs(folder)
-        print "cd to %s" % folder
+        print("cd to %s" % folder)
         os.chdir(folder)
         me.cd(folder)
         folders_down, files = me.ls()
-        explore(folders_down)
+        explore(folders_down) #recursive yay
         save(files)
         os.chdir("..")
         me.cd("..")
