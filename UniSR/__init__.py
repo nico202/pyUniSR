@@ -47,7 +47,7 @@ class User:
             try:
                 self.currentPath.pop()
             except:
-                print "Sei gia al livello piu alto!"
+                print("Sei gia al livello piu alto!")
             command = "LevelUp"
             path = "undefined"
         else:
@@ -98,7 +98,7 @@ class User:
         if login.status_code == 200:
             self.lastPageContent = login.content
             login_html = html.fromstring(login.content)
-            print "Logged in as %s successfully" % (username)
+            print("Logged in as %s successfully" % (username))
             if login_html.xpath('//div[@class="titolopagina"]/text()')[0] == "Scegli carriera":
                 if matricola == "auto":
                     table = [ box for box in login_html.xpath('//table[@class="detail_table"]//text()') if box.strip() ]
@@ -143,7 +143,7 @@ class User:
         file.extend(self.currentPath)
         file.append(fileName)
         url = self.dati_url + "/".join(file)
-        print "Downloading %s" % fileName
+        print("Downloading %s" % fileName)
         file_content = self.session.get(url, auth=self.auth)
         return file_content
 
@@ -185,9 +185,9 @@ class User:
                     message_id += char
             if message_id not in present_id:
                 to_download.append(message_id)
-                print message_id
+                print(message_id)
         if not to_download:
-            print "All messages has already been downloaded"
+            print("All messages has already been downloaded")
         else:
             self.openMessages(to_download)
 
@@ -223,9 +223,9 @@ class User:
         prenotazioni_html = html.fromstring(self.lastPageContent)
         exams = prenotazioni_html.xpath('//th[@class="detail_table"]//text()')
         if exams:
-            print exams
+            print(exams)
         else:
-            print "Non hai prenotazioni!"
+            print("Non hai prenotazioni!")
 
     def calendario(self, day_only = False):
         if day_only:
@@ -235,7 +235,7 @@ class User:
                 day_only = "%s/%s/%s" % (today.day, today.month, today.year)
 #            elif day_only in ["domani", "tomorrow"]: ##There should be an import that does this
 
-            print "Printing only date: %s" % day_only
+            print("Printing only date: %s" % day_only)
         url = self.url + self.f_url["redirect"]
         self.lastPageContent = self.req_get(url, auth="auth", params=self.redirect["orarioLezioni"]).content
         orari_html = html.fromstring(self.lastPageContent)
@@ -264,7 +264,8 @@ class User:
                 index = counter * 2
                 to_print = "%s %s %s %s %s" % (date, orari_list[counter], lezione, aule_list[index], aule_list[index + 1])
                 if day_only == date or not day_only:
-                    print to_print
+                    print(to_print)
+
             counter += 1
 
     def getCorsi(self):
@@ -281,4 +282,4 @@ class User:
         if self.notification_helper:
             self.notification_helper(content)
         else:
-            print "I should send %s but don't know how" % (content)
+            print("I should send %s but don't know how" % (content))
