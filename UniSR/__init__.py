@@ -148,8 +148,10 @@ class User:
         return file_content
 
     def datiDocenti(self):
-        post_data = {"username": self.auth[0], "password": self.auth[1]}
-        self.lastPageContent = self.session.post(self.f_url['datiDocenti'], data=post_data).content
+#        post_data = {"username": self.auth[0], "password": self.auth[1]}
+#        self.lastPageContent = self.session.post(self.f_url['datiDocenti'], data=post_data).content
+        url = self.url + self.f_url["redirect"]
+        self.lastPageContent = self.session.post(url, params=self.redirect["datiDocenti"]).content
         return self.ls()
 
     def saveFile(self, fileName, requests_response):
