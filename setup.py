@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name = "pyUniSR",
-    version = "0.0.5",
+    version = "0.0.7",
     author = "Nicolo Balzarotti",
     author_email = "anothersms@gmail.com",
     description = ("Python class to access studenti.unisr.it (Univerity Vita-Salute San Raffaele, Milano)"),
